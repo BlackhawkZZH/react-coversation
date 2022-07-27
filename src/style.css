@@ -1,0 +1,30 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.cov-tool {
+  margin-left: -40px;
+  display: flex;
+  align-items: baseline;
+  width: 250px;
+}
+
+.left {
+  list-style: none;
+  text-align: center;
+}
+
+li {
+  width: 100px;
+}
+
+.active {
+  background-color: gray;
+  color: white;
+}
+
+.nonact:hover {
+  background-color: #ccc;
+  color: white;
+}
