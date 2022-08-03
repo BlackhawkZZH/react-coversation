@@ -5,37 +5,33 @@ let data = ['Front', 'Back', 'Middle'];
 
 const Conversation = (props) => {
   const { oriData } = props;
-  let [data, setData] = useState(
+  const [data, setData] = useState(
     oriData.map((elem) => {
       return { contact: elem, cache: '' };
     })
   );
-  let [actIdx, setActIdx] = useState(-1);
-  let [info, setInfo] = useState('');
+  const [actIdx, setActIdx] = useState(-1);
+  const [info, setInfo] = useState('');
 
   const clickHandler = (idx) => {
-    info = data[idx].cache;
-    actIdx = idx;
-    setInfo(info);
+    setInfo(data[idx].cache);
     setActIdx(idx);
   };
 
   const onChangeHandler = (e) => {
     if (actIdx === -1) return;
-    info = e.target.value;
-    setInfo(info);
-    data = JSON.parse(JSON.stringify(data))
-    data[actIdx].cache = info;
+    setInfo(e.target.value);
+    data[actIdx].cache = e.target.value;
     setData(data);
   };
 
   return (
-    <div className = "cov-tool">
-      <ul className = "left">
+    <div className="cov-tool">
+      <ul className="left">
         {data.map((elem, idx) => {
           return (
             <li
-              className={idx === actIdx? 'active':'nonact'}
+              className={idx === actIdx ? 'active' : 'nonact'}
               key={idx}
               onClick={() => {
                 clickHandler(idx);
@@ -47,7 +43,7 @@ const Conversation = (props) => {
         })}
       </ul>
       <input
-        className = "right"
+        className="right"
         type="text"
         value={info}
         onChange={(e) => {
